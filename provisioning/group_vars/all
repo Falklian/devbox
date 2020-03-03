@@ -1,5 +1,0 @@
----
-linux_username: falklian
-linux_comment: Bill Walker
-linux_password: $6$SAY3H9NUi$OgUIQtTJ5HODsC9tcwjYmHTbP3h4yTdxgw9gRXD.jAp4FoulMV8lxfb1gVxwGibIDPIna4Erzf93tCMTaeape/
-ssh_pub_key_path: /home/falklian/.ssh/id_rsa.pub

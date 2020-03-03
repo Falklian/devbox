@@ -1,6 +1,10 @@
+provisioning/group_vars/all.yml
 
-# Created by https://www.gitignore.io/api/linux,macos,vagrant,visualstudiocode
-# Edit at https://www.gitignore.io/?templates=linux,macos,vagrant,visualstudiocode
+# Created by https://www.gitignore.io/api/ansible,linux,macos,vagrant,visualstudiocode
+# Edit at https://www.gitignore.io/?templates=ansible,linux,macos,vagrant,visualstudiocode
+
+### Ansible ###
+*.retry
 
 ### Linux ###
 *~
@@ -49,7 +53,7 @@ Temporary Items
 # General
 .vagrant/*
 
-# Log files
+# Log files (if you are creating logs in debug mode, uncomment this)
 *.log
 
 ### Vagrant Patch ###
@@ -66,4 +70,4 @@ Temporary Items
 # Ignore all local history of files
 .history
 
-# End of https://www.gitignore.io/api/linux,macos,vagrant,visualstudiocode
+# End of https://www.gitignore.io/api/ansible,linux,macos,vagrant,visualstudiocode

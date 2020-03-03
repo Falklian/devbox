@@ -1,0 +1,40 @@
+---
+- name: Install zsh
+  apt:
+    update_cache: yes
+    name: zsh
+
+- name: Add user
+  user:
+    name: '{{linux_username}}'
+    password: '{{linux_password}}'
+    comment: '{{linux_comment}}'
+    append: yes
+    groups: sudo
+    shell: /bin/zsh
+
+- name: Set authorized key from file
+  authorized_key:
+    user: '{{linux_username}}'
+    state: present
+    key: '{{lookup("file", ssh_pub_key_path)}}'
+
+- name: Install Oh My Zsh for added user
+  become: yes
+  become_user: '{{linux_username}}'
+  git:
+    repo: https://github.com/ohmyzsh/ohmyzsh.git
+    dest: '/home/{{linux_username}}/.oh-my-zsh'
+
+- name: Download bullet-train.zsh-theme
+  get_url:
+    url: http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme
+    dest: '/home/{{linux_username}}/.oh-my-zsh/custom/themes/bullet-train.zsh-theme'
+    mode: '0644'
+
+- name: Copy .zshrc to home directory
+  become: yes
+  become_user: '{{linux_username}}'
+  copy:
+    src: zshrc.zsh-template
+    dest: '/home/{{linux_username}}/.zshrc'

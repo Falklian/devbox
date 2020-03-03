@@ -1,0 +1,10 @@
+---
+- name: Create dev box
+  hosts: all
+  remote_user: root
+  become: yes
+
+  roles:
+    - common
+    - user
+    - phpdev

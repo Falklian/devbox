@@ -1,0 +1,11 @@
+---
+- name: Change timezone to America/Chicago
+  timezone:
+    name: America/Chicago
+
+- name: Update package cache and install package updates
+  apt:
+    update_cache: yes
+    upgrade: dist
+    autoremove: yes
+    purge: yes

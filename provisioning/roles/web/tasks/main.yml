@@ -56,6 +56,6 @@
 
 - name: Set timezone in php.ini for fpm
   replace:
-      path: /etc/php/7.4/cli/php.ini
+      path: /etc/php/7.4/fpm/php.ini
       regexp: ';date.timezone.*'
       replace: 'date.timezone = UTC'

@@ -1,4 +1,8 @@
 ---
+- name: Set the hostname to 'devbox'
+  hostname:
+      name: devbox
+
 - name: Change timezone to America/Chicago
   timezone:
     name: America/Chicago
@@ -9,3 +13,10 @@
     upgrade: dist
     autoremove: yes
     purge: yes
+
+- name: Install common packages
+  apt:
+    pkg:
+      - sendmail
+      - unzip
+      - zip

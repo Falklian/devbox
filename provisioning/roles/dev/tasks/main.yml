@@ -1,0 +1,16 @@
+---
+- name: Add user name to global git config
+  become: yes
+  become_user: '{{linux_username}}'
+  git_config:
+      scope: global
+      name: user.name
+      value: '{{git_username}}'
+
+- name: Add user email to global git config
+  become: yes
+  become_user: '{{linux_username}}'
+  git_config:
+    scope: global
+    name: user.email
+    value: '{{git_email}}'

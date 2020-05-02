@@ -1,0 +1,61 @@
+---
+- name: Add ondrej/php ppa
+  apt_repository:
+    repo: ppa:ondrej/php
+
+- name: Add ondrej/nginx-mainline ppa
+  apt_repository:
+    repo: ppa:ondrej/nginx-mainline
+
+- name: Add chris-lea/redis-server ppa
+  apt_repository:
+    repo: ppa:chris-lea/redis-server
+
+- name: Install NGINX and PHP packages
+  apt:
+    pkg:
+      - nginx
+      - php-bcmath
+      - php-cli
+      - php-curl
+      - php-dev
+      - php-fpm
+      - php-gd
+      - php-imap
+      - php-intl
+      - php-mbstring
+      - php-mysql
+      - php-pgsql
+      - php-readline
+      - php-soap
+      - php-sqlite3
+      - php-xml
+      - php-zip
+
+- name: Download Composer and place in /usr/local/bin
+  get_url:
+    url: https://getcomposer.org/composer-stable.phar
+    dest: /usr/local/bin/composer
+    mode: '0755'
+
+- name: Add Composer's vendor bin to path in .zshrc
+  lineinfile:
+    dest: '/home/{{linux_username}}/.zshrc'
+    line: "\nexport PATH=$PATH:/home/{{linux_username}}/.config/composer/vendor/bin"
+
+- name: Generate DH Params for NGINX
+  openssl_dhparam:
+      path: /etc/nginx/dhparams.pem
+      size: 2048
+
+- name: Set timezone in php.ini for cli
+  replace:
+      path: /etc/php/7.4/cli/php.ini
+      regexp: ';date.timezone.*'
+      replace: 'date.timezone = UTC'
+
+- name: Set timezone in php.ini for fpm
+  replace:
+      path: /etc/php/7.4/cli/php.ini
+      regexp: ';date.timezone.*'
+      replace: 'date.timezone = UTC'

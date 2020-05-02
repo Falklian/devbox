@@ -30,6 +30,8 @@
   get_url:
     url: http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme
     dest: '/home/{{linux_username}}/.oh-my-zsh/custom/themes/bullet-train.zsh-theme'
+    owner: '{{linux_username}}'
+    group: '{{linux_username}}'
     mode: '0644'
 
 - name: Copy .zshrc to home directory

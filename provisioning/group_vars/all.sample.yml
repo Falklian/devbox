@@ -3,3 +3,5 @@ linux_username: <desired username>
 linux_comment: <your full name>
 linux_password: <use `mkpasswd --method=sha-512` to generate password>
 ssh_pub_key_path: <path to pubkey>
+git_username: <name to use for global git config>
+git_email: <email address to use for global git config>
